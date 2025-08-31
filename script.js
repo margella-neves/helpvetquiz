@@ -30,4 +30,74 @@ function verificarToxicidade() {
         return;
     }
     let nomePlantaNormalizado = removerAcentos(nomePlanta.toLowerCase());
-    let plantaEncontrada = plantasToxi
+    let plantaEncontrada = plantasToxicas.find(planta => 
+        planta.nomes.some(nome => nome === nomePlantaNormalizado)
+    );
+    if (plantaEncontrada) {
+        document.getElementById("resultado").innerHTML = `⚠️ <strong>Atenção!</strong> ${plantaEncontrada.descricao}`;
+        document.getElementById("resultado").style.color = "red";
+    } else {
+        document.getElementById("resultado").innerHTML = `✅ Aparentemente, "${nomePlanta}" não está na lista de plantas tóxicas.`;
+        document.getElementById("resultado").style.color = "green";
+    }
+}
+
+// ----------------------
+// Quiz / Gamificação
+// ----------------------
+const quizPerguntas = [
+    {
+        pergunta: "Qual planta pode causar falência renal em gatos?",
+        opcoes: ["Lírio", "Espada de São Jorge", "Samambaia", "Tulipa"],
+        resposta: "Lírio"
+    },
+    {
+        pergunta: "Qual planta possui oxalato de cálcio e pode irritar boca e garganta?",
+        opcoes: ["Costela de Adão", "Azaleia", "Ricinus", "Sorgo"],
+        resposta: "Costela de Adão"
+    },
+    {
+        pergunta: "Planta fotossensibilizante que causa lesões de pele?",
+        opcoes: ["Stryphnodendron", "Dieffenbachia", "Samambaia", "Espada de São Jorge"],
+        resposta: "Stryphnodendron"
+    }
+];
+
+let pontuacao = 0;
+let perguntaAtual = 0;
+
+function iniciarQuiz() {
+    pontuacao = 0;
+    perguntaAtual = 0;
+    document.getElementById("pontuacao").innerText = "";
+    mostrarPergunta();
+}
+
+function mostrarPergunta() {
+    const perguntaObj = quizPerguntas[perguntaAtual];
+    let html = `<p>${perguntaObj.pergunta}</p>`;
+    perguntaObj.opcoes.forEach(opcao => {
+        html += `<button onclick="responderQuiz('${opcao}')">${opcao}</button>`;
+    });
+    document.getElementById("quiz").innerHTML = html;
+}
+
+function responderQuiz(resposta) {
+    const correta = quizPerguntas[perguntaAtual].resposta;
+    if (resposta === correta) {
+        pontuacao++;
+        alert("✅ Correto!");
+    } else {
+        alert(`❌ Errado! A resposta correta é: ${correta}`);
+    }
+    perguntaAtual++;
+    if (perguntaAtual < quizPerguntas.length) {
+        mostrarPergunta();
+    } else {
+        document.getElementById("quiz").innerHTML = `<p>Quiz finalizado!</p>`;
+        document.getElementById("pontuacao").innerText = `Sua pontuação: ${pontuacao}/${quizPerguntas.length}`;
+        if (pontuacao === quizPerguntas.length) {
+            alert("🏆 Parabéns! Você ganhou a medalha de Mestre em Plantas Tóxicas!");
+        }
+    }
+}
