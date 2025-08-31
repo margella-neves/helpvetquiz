@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HELP VET</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao HELP VET!</h1>
+    </header>
+
+    <section>
+        <p>Este é um site criado para que você possa verificar de maneira rápida se uma planta é tóxica para seu animal.</p>
+        <p><strong>Plantas tóxicas são aquelas que prejudicam a saúde dos animais, podendo até mesmo causar-lhes a morte pela ingestão.</strong></p>
+        
+        <img src="Design sem nome.png" style="max-width: 100%; height: auto; margin-top: 20px;">
+    </section> 
+
+    <!-- Verificação de plantas -->
+    <section>
+        <input type="text" id="nomePlanta" placeholder="Digite o nome da planta">
+        <button onclick="verificarToxicidade()">Pesquisar</button>
+        <p id="resultado"></p>
+    </section>
+
+    <!-- Quiz / Gamificação -->
+    <section>
+        <h2>Teste seus conhecimentos!</h2>
+        <div id="quiz"></div>
+        <p id="pontuacao"></p>
+        <button onclick="iniciarQuiz()">Iniciar Quiz</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
