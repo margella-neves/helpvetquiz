@@ -1,11 +1,9 @@
-/* Corpo e geral */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background: linear-gradient(135deg, #f8f8f8, #8b8d8c);
+    background: linear-gradient(135deg, #f8f8f8,#8b8d8c);
     margin: 0 8px;
     padding: 20px;
-    box-sizing: border-box;
 }
 
 header {
@@ -15,7 +13,20 @@ header {
     border-radius: 10px;
 }
 
-/* Inputs */
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
 input {
     padding: 10px;
     width: 80%;
@@ -24,14 +35,44 @@ input {
     border-radius: 5px;
     font-size: 18px;
     margin-bottom: 10px;
-    box-sizing: border-box;
 }
 
-/* Botões gerais */
-button {
-    background-color: #28a745;
+#resultado {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Quiz */
+#quiz button {
+    display: block;
+    margin: 10px auto;
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
     border: none;
     cursor: pointer;
-    font-size: 18px;
+    width: 60%;
+    max-width: 250px;
+}
+
+#quiz button:hover {
+    background-color: #0056b3;
+}
+
+#quiz {
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#pontuacao {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4500;
+   
